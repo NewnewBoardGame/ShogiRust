@@ -13,10 +13,10 @@ func main() {
 
 	var file *os.File
 	var err error
-	if len(os.Args) < 2 {
+	if len(os.Args) >= 2 {
 		file, err = os.Open(os.Args[1])
 	}
-	if err != nil {
+	if len(os.Args) < 2 || err != nil {
 		file, err = os.Open("input.txt")
 	}
 
@@ -33,11 +33,12 @@ func calculateNoOfValidStrings(file *os.File) int {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		if stringHasRepetition(line) {
+		fmt.Println("Current line: ", line)
+		if !stringHasRepetition(line) {
 			noOfValidStrings++
 		}
 	}
-	fmt.Println("Calculated of valid Strings: ", noOfValidStrings)
+	fmt.Println("Calculated no. of invalid strings: ", noOfValidStrings)
 	return noOfValidStrings
 }
 
@@ -46,6 +47,9 @@ func stringHasRepetition(s string) bool {
 		for j := i + 1; j < len(s); j++ {
 			if s[i] == s[j] {
 				diff := j - i
+				if diff == 1 {
+					return false
+				}
 				for k := 1; k < diff; k++ {
 					if s[i+k] != s[j+k] {
 						return false
