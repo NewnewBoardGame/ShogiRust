@@ -8,6 +8,7 @@ jobs:
   install_Go_and_run_unit_tests:
     runs-on: ubuntu-latest
     steps:
+
       - name: Check out repository code
         uses: actions/checkout@v5
 
@@ -16,7 +17,18 @@ jobs:
         with:
           go-version: '1.25.5'
 
+      - name: Install Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          components: rustfmt
+
       - name: Run Go tests
         run: |
           cd shogi_go
           go test
+
+      - name: Run Rust tests
+        run: |
+          cd shogi_rust
+          cargo test --all-features
+
