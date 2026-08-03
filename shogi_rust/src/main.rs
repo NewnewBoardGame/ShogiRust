@@ -1,5 +1,10 @@
 use std::io;
 
+struct AStruct {
+    aField: String,
+    anotherField: String,
+}
+
 fn main() {
     println!("Hello, world! From Rust..");
 
