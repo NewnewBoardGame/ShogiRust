@@ -5,6 +5,10 @@ struct AStruct {
     anotherField: String,
 }
 
+trait ATrait {
+    fn name(&self) -> String;
+}
+
 fn main() {
     println!("Hello, world! From Rust..");
 
