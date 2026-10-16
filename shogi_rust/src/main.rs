@@ -27,5 +27,11 @@ fn main() {
 
     println!("Hello, world!");
     let foo = 25;
-    println!("{}", foo)
+    println!("{}", foo);
+
+    writeToDatabase();
+}
+
+fn writeToDatabase() {
+    println!("Placeholder...")
 }
