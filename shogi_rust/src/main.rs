@@ -1,8 +1,8 @@
 use std::io;
 
 struct AStruct {
-    aField: String,
-    anotherField: String,
+    a_field: String,
+    another_field: String,
 }
 
 trait ATrait {
@@ -17,12 +17,15 @@ fn main() {
     println!("Please input your guess.");
 
     let mut guess = String::new();
-    let guessPtr = &mut guess;
+    let guess_ptr = &mut guess;
 
     io::stdin()
-      .read_line(guessPtr)
+      .read_line(guess_ptr)
       .expect("Failed to read line");
 
     println!("You guessed: {guess}");
-}
 
+    println!("Hello, world!");
+    let foo = 25;
+    println!("{}", foo)
+}
