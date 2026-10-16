@@ -1,5 +1,6 @@
 use std::io;
 
+#[derive(Debug)]
 struct AStruct {
     a_field: String,
     another_field: String,
@@ -7,6 +8,12 @@ struct AStruct {
 
 trait ATrait {
     fn name(&self) -> String;
+}
+
+impl ATrait for AStruct {
+    fn name(&self) -> String {
+        "test".to_string()
+    }
 }
 
 fn main() {
@@ -29,9 +36,13 @@ fn main() {
     let foo = 25;
     println!("{}", foo);
 
-    writeToDatabase();
+    let bar = AStruct{ a_field: "foo".to_string(), another_field: "bar".to_string() };
+    println!("bar:{:?}", bar);
+    println!("name: {}", bar.name());
+
+    write_to_database();
 }
 
-fn writeToDatabase() {
+fn write_to_database() {
     println!("Placeholder...")
 }
